@@ -4,8 +4,16 @@ let ganaste = document.querySelector(".ganaste");
 let inputPalabras = document.querySelector(".inputPalabras");
 let empezar = document.querySelector(".empezar");
 let restart = document.querySelector(".restart");
+let panelVidas = document.querySelector(".span-vidas");
 let panel = document.createElement("div");
 let stats = document.querySelector(".puntaje");
+let imgVida = document.createElement("img");
+    imgVida.src = "/Images/Icons/vida.png"
+    let imgVida2 = imgVida.cloneNode();
+    let imgVida3 = imgVida.cloneNode();
+    imgVida.className = "vida1"
+    imgVida2.className = "vida2"
+    imgVida3.className = "vida3"
 let timer 
 let puntaje = 0;
 let palabras = [];
@@ -179,24 +187,25 @@ let getPalabra;
 
 function getRandom() {
 
+  quitarVidas();
 
   if (palabras.length >= 20 || vidas <= 0) {
     clearInterval(timer);
     container.append("Perdiste...");
     panel.remove(reset);
-    restart.style.display = "block";
+    restart.style.display = "flex";
   } else if (puntaje >= 200) {
     container.append("Ganaste!");
     clearInterval(timer);
     panel.remove(reset);
-    restart.style.display = "block";
+    restart.style.display = "flex";
 
     // ---------------------Dificultades--------------------- 
 
   } else {
     if (puntaje <= 12) {
       clearInterval(timer);
-      timer = setInterval(getRandom, 1500);
+      timer = setInterval(getRandom, 500);
       getPalabra =
         diccionario3[Math.floor(Math.random() * diccionario3.length)];
       palabras.push(getPalabra);
@@ -280,3 +289,38 @@ function imprimirPalabras(arg) {
   }
   return items;
 }
+
+// Funcion para imprimir las vidas del jugador en la pantalla basado en el puntaje
+
+function imprimirVidas(){
+
+  if(vidas === 3){
+
+    panelVidas.appendChild(imgVida);
+    panelVidas.appendChild(imgVida2);
+    panelVidas.appendChild(imgVida3);
+
+  }
+}
+  imprimirVidas();
+
+// Actualiza las vidas del jugador en la pantalla 
+
+function quitarVidas(){
+  
+  if(vidas === 2){
+
+    imgVida3.src = "/Images/Icons/heart.png";
+
+  }else if(vidas === 1){
+
+    imgVida2.src = "/Images/Icons/heart.png";
+
+  }else if(vidas === 0){
+
+    imgVida.src = "/Images/Icons/heart.png";
+
+  }
+}
+
+  
