@@ -329,7 +329,7 @@ async function getPalabras(){
   const options = {
     method: 'GET',
     headers: {
-      // 'X-RapidAPI-Key':
+      'X-RapidAPI-Key': '6f144b502dmshc76b1f8254a4b34p103d16jsn4f5c9400ad6d',
       'X-RapidAPI-Host': 'random-words5.p.rapidapi.com'
     }
   };
@@ -365,5 +365,3 @@ async function getPalabras(){
   diccionario8 = data8;
 
 }
-
-// 6f144b502dmsh ||||   c76b1f8254a4 ||||  b34p103d16jsn4f  ||| 5c9400ad6d
