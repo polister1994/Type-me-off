@@ -175,7 +175,8 @@ let diccionario8 = [
 ];
 
 empezar.addEventListener("click", () => {
-  setTimeout(timer=setInterval(getRandom, 3000),3000)
+  getPalabras();
+  setTimeout(timer=setInterval(getRandom, 4000),4000)
   empezar.style.display = "none";
 })
 
@@ -333,66 +334,34 @@ async function getPalabras(){
     }
   };
   
-  const peticion = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=3', options);
-  const data = await peticion.json();
-  console.log(data);
-  diccionario3 = data;
+  const peticion3 = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=3', options);
+  const data3 = await peticion3.json();
+  console.log(data3);
+  diccionario3 = data3;
 
-  // fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=3', options)
-  //   .then(response => response.json())
-  //   .then(data => { 
-      
-  //     diccionario3 = data;
-  //     console.log(diccionario3)
+  const peticion4 = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=4', options);
+  const data4 = await peticion4.json();
+  console.log(data4);
+  diccionario4 = data4;
 
-  //   })
-  //   .catch(err => console.error(err));
+  const peticion5 = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=5', options);
+  const data5 = await peticion5.json();
+  console.log(data5);
+  diccionario5 = data5;
 
-  //   fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=4', options)
-  //   .then(response => response.json())
-  //   .then(data => { 
-      
-  //     diccionario4 = data;
-  //     console.log(diccionario4)
-  //   })
-  //   .catch(err => console.error(err));
+  const peticion6 = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=6', options);
+  const data6 = await peticion6.json();
+  console.log(data6);
+  diccionario6 = data6;
 
-  //   fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=5', options)
-  //   .then(response => response.json())
-  //   .then(data => { 
-      
-  //     diccionario5 = data;
-  //     console.log(diccionario5)
-  //   })
-  //   .catch(err => console.error(err));
+  const peticion7 = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=7', options);
+  const data7 = await peticion7.json();
+  console.log(data7);
+  diccionario7 = data7;
 
-  //   fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=6', options)
-  //   .then(response => response.json())
-  //   .then(data => { 
-      
-  //     diccionario6 = data;
-  //     console.log(diccionario6)
-  //   })
-  //   .catch(err => console.error(err));
-
-  //   fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=7', options)
-  //   .then(response => response.json())
-  //   .then(data => { 
-      
-  //     diccionario7 = data;
-  //     console.log(diccionario7)
-  //   })
-  //   .catch(err => console.error(err));
-
-  //   fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=8', options)
-  //   .then(response => response.json())
-  //   .then(data => { 
-      
-  //     diccionario8 = data;
-  //     console.log(diccionario8)
-  //   })
-  //   .catch(err => console.error(err));
+  const peticion8 = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=8', options);
+  const data8 = await peticion8.json();
+  console.log(data8);
+  diccionario8 = data8;
 
 }
-
-getPalabras()
