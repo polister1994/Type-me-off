@@ -205,7 +205,7 @@ function getRandom() {
   } else {
     if (puntaje <= 12) {
       clearInterval(timer);
-      timer = setInterval(getRandom, 500);
+      timer = setInterval(getRandom, 1700);
       getPalabra =
         diccionario3[Math.floor(Math.random() * diccionario3.length)];
       palabras.push(getPalabra);
@@ -323,4 +323,76 @@ function quitarVidas(){
   }
 }
 
+
+async function getPalabras(){
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '6f144b502dmshc76b1f8254a4b34p103d16jsn4f5c9400ad6d',
+      'X-RapidAPI-Host': 'random-words5.p.rapidapi.com'
+    }
+  };
   
+  const peticion = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=3', options);
+  const data = await peticion.json();
+  console.log(data);
+  diccionario3 = data;
+
+  // fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=3', options)
+  //   .then(response => response.json())
+  //   .then(data => { 
+      
+  //     diccionario3 = data;
+  //     console.log(diccionario3)
+
+  //   })
+  //   .catch(err => console.error(err));
+
+  //   fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=4', options)
+  //   .then(response => response.json())
+  //   .then(data => { 
+      
+  //     diccionario4 = data;
+  //     console.log(diccionario4)
+  //   })
+  //   .catch(err => console.error(err));
+
+  //   fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=5', options)
+  //   .then(response => response.json())
+  //   .then(data => { 
+      
+  //     diccionario5 = data;
+  //     console.log(diccionario5)
+  //   })
+  //   .catch(err => console.error(err));
+
+  //   fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=6', options)
+  //   .then(response => response.json())
+  //   .then(data => { 
+      
+  //     diccionario6 = data;
+  //     console.log(diccionario6)
+  //   })
+  //   .catch(err => console.error(err));
+
+  //   fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=7', options)
+  //   .then(response => response.json())
+  //   .then(data => { 
+      
+  //     diccionario7 = data;
+  //     console.log(diccionario7)
+  //   })
+  //   .catch(err => console.error(err));
+
+  //   fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=8', options)
+  //   .then(response => response.json())
+  //   .then(data => { 
+      
+  //     diccionario8 = data;
+  //     console.log(diccionario8)
+  //   })
+  //   .catch(err => console.error(err));
+
+}
+
+getPalabras()
