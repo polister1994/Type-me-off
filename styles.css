@@ -34,6 +34,7 @@ h1{
 }
 .h1title{
     text-align: center;
+    margin: 0.2vw 0 0.2vw 0
 }
 
 main{
@@ -56,11 +57,15 @@ main{
     margin: 0.5vw 0 0.5vw 0;
 }
 .ppuntaje{
-    margin: 0vw 0 1vw 0;
+    margin: 0 0 0.2vw 0;
     font-size: 1vw;
+    display: none;
+}
+.puntaje{
+    margin-bottom: 0.5vw;
 }
 .inputPalabras{
-    display: flex;
+    display: none;
     color: white;
     border-radius: 10px;
     border-color: black;
@@ -144,9 +149,10 @@ main{
     margin-right: 0.5vw;
 }
 .div-vidas{
-    display: flex;
+    display: none;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 1vw;
 }
 .span-vidas img{
 

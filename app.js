@@ -5,8 +5,10 @@ let inputPalabras = document.querySelector(".inputPalabras");
 let empezar = document.querySelector(".empezar");
 let restart = document.querySelector(".restart");
 let panelVidas = document.querySelector(".span-vidas");
+let divVidas = document.querySelector(".div-vidas")
 let panel = document.createElement("div");
 let stats = document.querySelector(".puntaje");
+let mostrarPuntaje = document.querySelector(".ppuntaje")
 let imgVida = document.createElement("img");
     imgVida.src = "/Images/Icons/vida.png"
     let imgVida2 = imgVida.cloneNode();
@@ -19,6 +21,15 @@ let puntaje = 0;
 let palabras = [];
 let vidas = 3;
 reset = palabras.indexOf(inputPalabras.value);
+
+// -----------Local Storage -----------
+
+let dicJSON3
+let dicJSON4
+let dicJSON5
+let dicJSON6
+let dicJSON7
+let dicJSON8
 
 // Diccionario de palabras a usar en el juego
 
@@ -178,6 +189,9 @@ empezar.addEventListener("click", () => {
   getPalabras();
   setTimeout(timer=setInterval(getRandom, 4000),4000)
   empezar.style.display = "none";
+  inputPalabras.style.display = "flex";
+  divVidas.style.display = "flex";
+  mostrarPuntaje.style.display = "flex";
 })
 
 
@@ -195,6 +209,7 @@ function getRandom() {
     container.append("Perdiste...");
     panel.remove(reset);
     restart.style.display = "flex";
+    inputPalabras.style.display = "none"
   } else if (puntaje >= 200) {
     container.append("Ganaste!");
     clearInterval(timer);
@@ -329,7 +344,7 @@ async function getPalabras(){
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '6f144b502dmshc76b1f8254a4b34p103d16jsn4f5c9400ad6d',
+      'X-RapidAPI-Key': 'f5eeba8b1emsh9914ce73f21e7a7p19b0d9jsnf1d76aa6551a',
       'X-RapidAPI-Host': 'random-words5.p.rapidapi.com'
     }
   };
