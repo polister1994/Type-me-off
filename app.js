@@ -21,12 +21,7 @@ let puntaje = 0;
 let palabras = [];
 let vidas = 3;
 reset = palabras.indexOf(inputPalabras.value);
-let data3
-let data4
-let data5
-let data6
-let data7 
-let data8
+
 
 // Diccionario de palabras a usar en el juego
 
@@ -184,36 +179,36 @@ let diccionario8 = [
 
 empezar.addEventListener("click", () => {
 
-  if(localStorage.getItem("dicJSON3") === null){
-    getPalabras();
+  const diccionarioGeneral = localStorage.getItem("dicGeneral");
+  
+
+  if(diccionarioGeneral){
+
+    const diccionarioJSON = JSON.parse(diccionarioGeneral);
+    diccionario3 = diccionarioJSON["diccionario3"];
+    diccionario4 = diccionarioJSON["diccionario4"];
+    diccionario5 = diccionarioJSON["diccionario5"];
+    diccionario6 = diccionarioJSON["diccionario6"];
+    diccionario7 = diccionarioJSON["diccionario7"];
+    diccionario8 = diccionarioJSON["diccionario8"];
+
+    if(diccionarioJSON){
+
+      timer=setInterval(getRandom, 1700);
+
+    }
+
   }else{
-    data3 = localStorage.getItem("dicJSON3");
-    diccionario3 = JSON.parse(data3);
 
-    data4 = localStorage.getItem("dicJSON4")
-    diccionario4 =  JSON.parse(data4);
+    getPalabras();
 
-    data5 = localStorage.getItem("dicJSON5")
-    diccionario5 = JSON.parse(data5);
-
-    data6 = localStorage.getItem("dicJSON6")
-    diccionario6 = JSON.parse(data6);
-
-    data7 = localStorage.getItem("dicJSON7")
-    diccionario7 = JSON.parse(data7);
-
-    data8 = localStorage.getItem("dicJSON8")
-    diccionario8 = JSON.parse(data8);
-    
   }
   
-  if(data3&&data4&&data5&&data6&&data7&&data8){
-    timer=setInterval(getRandom, 1700)
-  }
   empezar.style.display = "none";
   inputPalabras.style.display = "flex";
   divVidas.style.display = "flex";
   mostrarPuntaje.style.display = "flex";
+
 })
 
 
@@ -372,32 +367,32 @@ async function getPalabras(){
   };
   
   const peticion3 = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=3', options);
-  data3 = await peticion3.json();
+  const data3 = await peticion3.json();
   console.log(data3);
   diccionario3 = data3;
 
   const peticion4 = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=4', options);
-  data4 = await peticion4.json();
+  const data4 = await peticion4.json();
   console.log(data4);
   diccionario4 = data4;
 
   const peticion5 = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=5', options);
-  data5 = await peticion5.json();
+  const data5 = await peticion5.json();
   console.log(data5);
   diccionario5 = data5;
 
   const peticion6 = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=6', options);
-  data6 = await peticion6.json();
+  const data6 = await peticion6.json();
   console.log(data6);
   diccionario6 = data6;
 
   const peticion7 = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=7', options);
-  data7 = await peticion7.json();
+  const data7 = await peticion7.json();
   console.log(data7);
   diccionario7 = data7;
 
   const peticion8 = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=8', options);
-  data8 = await peticion8.json();
+  const data8 = await peticion8.json();
   console.log(data8);
   diccionario8 = data8;
 
@@ -408,21 +403,23 @@ async function getPalabras(){
 }
 
 
+  // -----------Local Storage ----------- Guardas las palabras en el local storage para no hacer mas peticiones a la API
+
 function saveLocalStorage(){
    
-  // -----------Local Storage ----------- Guardas las palabras en el local storage para no hacer mas peticiones a la API
-    const dicJSON3 = JSON.stringify(diccionario3);
-    localStorage.setItem("dicJSON3", dicJSON3);
-    const dicJSON4 = JSON.stringify(diccionario4);
-    localStorage.setItem("dicJSON4", dicJSON4);
-    const dicJSON5 = JSON.stringify(diccionario5);
-    localStorage.setItem("dicJSON5", dicJSON5);
-    const dicJSON6 = JSON.stringify(diccionario6);
-    localStorage.setItem("dicJSON6", dicJSON6);
-    const dicJSON7 = JSON.stringify(diccionario7);
-    localStorage.setItem("dicJSON7", dicJSON7);
-    const dicJSON8 = JSON.stringify(diccionario8);
-    localStorage.setItem("dicJSON8", dicJSON8);
+    const objeto = {
+
+      diccionario3,
+      diccionario4,
+      diccionario5,
+      diccionario6,
+      diccionario7,
+      diccionario8
+    } 
+
+    const diccionarioGeneral = JSON.stringify(objeto);
+    localStorage.setItem("dicGeneral", diccionarioGeneral);
+
 
 }
 
