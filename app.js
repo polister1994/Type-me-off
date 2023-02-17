@@ -237,6 +237,7 @@ function getRandom() {
 
   } else {
     if (puntaje <= 12) {
+      panel.className=("col-sm-8 col-md-8 col-xl-5")
       clearInterval(timer);
       timer = setInterval(getRandom, 1700);
       getPalabra =
@@ -365,7 +366,7 @@ async function getPalabras(){
       'X-RapidAPI-Host': 'random-words5.p.rapidapi.com'
     }
   };
-  
+
   const peticion3 = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=3', options);
   const data3 = await peticion3.json();
   console.log(data3);
