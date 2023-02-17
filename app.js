@@ -367,40 +367,45 @@ async function getPalabras(){
     }
   };
 
-  const peticion3 = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=3', options);
-  const data3 = await peticion3.json();
-  console.log(data3);
-  diccionario3 = data3;
+  const urls = [
 
-  const peticion4 = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=4', options);
-  const data4 = await peticion4.json();
-  console.log(data4);
-  diccionario4 = data4;
+    ('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=3'),
+  
+    ('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=4'),
+  
+    ('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=5'),
+  
+    ('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=7'),
+  
+    ('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=8')
+  
+  ];
+  let datos
+  const fetchPromesas = urls.map(url => fetch(url,options));
 
-  const peticion5 = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=5', options);
-  const data5 = await peticion5.json();
-  console.log(data5);
-  diccionario5 = data5;
+  Promise.all(fetchPromesas)
+  .then(respuestas => Promise.all(respuestas.map(respuesta => respuesta.json())))
+  .then(data =>{
+    datos = data;
 
-  const peticion6 = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=6', options);
-  const data6 = await peticion6.json();
-  console.log(data6);
-  diccionario6 = data6;
+    if(datos.length == 5){
+  
+      diccionario3 = datos[0];
+      diccionario4 = datos[1];
+      diccionario5 = datos[2];
+      diccionario6 = datos[3];
+      diccionario7 = datos[4];
+      diccionario8 = datos[5];
+  
+      setTimeout(saveStart,3000);
+      
+    }
+ 
+  })
+  .catch(error => {
+    console.log(error)
+  })
 
-  const peticion7 = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=7', options);
-  const data7 = await peticion7.json();
-  console.log(data7);
-  diccionario7 = data7;
-
-  const peticion8 = await fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=20&wordLength=8', options);
-  const data8 = await peticion8.json();
-  console.log(data8);
-  diccionario8 = data8;
-
-  if(data3&&data4&&data5&&data6&&data7&&data8){
-    saveLocalStorage();
-    getRandom();
-  }
 }
 
 
@@ -424,3 +429,7 @@ function saveLocalStorage(){
 
 }
 
+function saveStart(){
+  saveLocalStorage();
+  getRandom();
+}
