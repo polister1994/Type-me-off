@@ -229,8 +229,8 @@ function getRandom() {
 
   if (palabras.length >= 20 || vidas <= 0) {
     clearInterval(timer);
-    // container.append("Perdiste...");
-    // panel.remove(reset);
+    container.append("Perdiste...");
+    panel.remove(reset);
     restart.style.display = "flex";
     inputPalabras.style.display = "none"
   } else if (puntaje >= 200) {
