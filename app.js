@@ -211,6 +211,8 @@ empezar.addEventListener("click", () => {
 
 })
 
+// Crea el span de palabras a mostrar introducirse en el HTML 
+
 function crearSpanPalabras(){
   let spanPalabras = document.createElement("span");
   spanPalabras.id = getPalabra;
