@@ -180,7 +180,7 @@ let diccionario8 = [
 empezar.addEventListener("click", () => {
 
   const diccionarioGeneral = localStorage.getItem("dicGeneral");
-  
+  container.appendChild(panel);
 
   if(diccionarioGeneral){
 
@@ -211,7 +211,13 @@ empezar.addEventListener("click", () => {
 
 })
 
-
+function crearSpanPalabras(){
+  let spanPalabras = document.createElement("span");
+  spanPalabras.id = getPalabra;
+  spanPalabras.innerHTML=(getPalabra);
+  panel.append(spanPalabras);
+  spanPalabras.className = ("palabras active");
+}
 
 // Funcion principal , obtiene palabras del diccionario y las imprime basado en el puntaje del jugador
 
@@ -223,8 +229,8 @@ function getRandom() {
 
   if (palabras.length >= 20 || vidas <= 0) {
     clearInterval(timer);
-    container.append("Perdiste...");
-    panel.remove(reset);
+    // container.append("Perdiste...");
+    // panel.remove(reset);
     restart.style.display = "flex";
     inputPalabras.style.display = "none"
   } else if (puntaje >= 200) {
@@ -237,14 +243,14 @@ function getRandom() {
 
   } else {
     if (puntaje <= 12) {
-      panel.className=("col-sm-8 col-md-8 col-xl-5")
+      panel.className=("col-sm-8 col-md-8 col-xl-5 panel")
       clearInterval(timer);
       timer = setInterval(getRandom, 1700);
       getPalabra =
         diccionario3[Math.floor(Math.random() * diccionario3.length)];
-      palabras.push(getPalabra);
-      panel.innerHTML = imprimirPalabras(palabras);
-      container.appendChild(panel);
+        palabras.push(getPalabra)
+        crearSpanPalabras();
+      
       return getPalabra;
     } else if (puntaje <= 25) {
       clearInterval(timer);
@@ -252,8 +258,8 @@ function getRandom() {
       getPalabra =
         diccionario4[Math.floor(Math.random() * diccionario4.length)];
       palabras.push(getPalabra);
-      panel.innerHTML = imprimirPalabras(palabras);
-      container.appendChild(panel);
+      crearSpanPalabras();
+
       return getPalabra;
     } else if (puntaje <= 40) {
       clearInterval(timer);
@@ -261,8 +267,8 @@ function getRandom() {
       getPalabra =
         diccionario5[Math.floor(Math.random() * diccionario5.length)];
       palabras.push(getPalabra);
-      panel.innerHTML = imprimirPalabras(palabras);
-      container.appendChild(panel);
+      crearSpanPalabras();
+
       return getPalabra;
     } else if (puntaje <= 70) {
       clearInterval(timer);
@@ -270,8 +276,8 @@ function getRandom() {
       getPalabra =
         diccionario6[Math.floor(Math.random() * diccionario6.length)];
       palabras.push(getPalabra);
-      panel.innerHTML = imprimirPalabras(palabras);
-      container.appendChild(panel);
+      crearSpanPalabras();
+
       return getPalabra;
     } else if (puntaje <= 100) {
       clearInterval(timer);
@@ -279,8 +285,8 @@ function getRandom() {
       getPalabra =
         diccionario7[Math.floor(Math.random() * diccionario7.length)];
       palabras.push(getPalabra);
-      panel.innerHTML = imprimirPalabras(palabras);
-      container.appendChild(panel);
+      crearSpanPalabras();
+
       return getPalabra;
     } else {
       clearInterval(timer);
@@ -288,8 +294,8 @@ function getRandom() {
       getPalabra =
         diccionario8[Math.floor(Math.random() * diccionario8.length)];
       palabras.push(getPalabra);
-      panel.innerHTML = imprimirPalabras(palabras);
-      container.appendChild(panel);
+      crearSpanPalabras();
+
       return getPalabra;
     }
   }
@@ -299,18 +305,29 @@ function getRandom() {
 
 inputPalabras.addEventListener("change", () => {
   let ubicacion = palabras.indexOf(inputPalabras.value);
+  const remover = inputPalabras.value;
+  console.log(remover)
+  console.log(inputPalabras.value)
+  
 
   if (palabras.includes(inputPalabras.value)) {
     puntaje = inputPalabras.value.length + puntaje;
+    stats.innerHTML = `${puntaje}`;
+    palabras.splice(ubicacion, 1);
+
+    panel.querySelector("#"+remover).remove();
+
+    console.log("bien",remover)
+    console.log("bien",inputPalabras.value)
+    
   }else {
     vidas--
+    console.log("mal",remover)
+    console.log("mal",inputPalabras.value)
   }
 
-  palabras.splice(ubicacion, 1);
-
   inputPalabras.value = "";
-
-  stats.innerHTML = `${puntaje}`;
+  
 });
 
 // Recorre el array para ubicar el index de la palabra a mostrar en la pantalla

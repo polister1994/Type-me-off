@@ -31,6 +31,7 @@ h1{
     justify-items: center;
     justify-content: center;
     font-size: 2.5vw;
+    overflow: hidden;
 }
 .h1title{
     text-align: center;
@@ -92,6 +93,11 @@ main{
 }
 .palabras{
     width: 2vw;
+    
+}
+.palabras.active{
+    transform: translateY(250px);
+    transition: 20s linear;
 }
 .restart{
     background-image: linear-gradient(to bottom,rgb(243 9 253) , rgb(140 95 240),rgb(47 186 227));
