@@ -190,7 +190,7 @@ empezar.addEventListener("click", () => {
     diccionario5 = diccionarioJSON["diccionario5"];
     diccionario6 = diccionarioJSON["diccionario6"];
     diccionario7 = diccionarioJSON["diccionario7"];
-    diccionario8 = diccionarioJSON["diccionario8"];
+    // diccionario8 = diccionarioJSON["diccionario8"];
 
     if(diccionarioJSON){
 
@@ -211,8 +211,6 @@ empezar.addEventListener("click", () => {
 
 })
 
-// Crea el span de palabras a mostrar introducirse en el HTML 
-
 function crearSpanPalabras(){
   let spanPalabras = document.createElement("span");
   spanPalabras.id = getPalabra;
@@ -231,8 +229,8 @@ function getRandom() {
 
   if (palabras.length >= 20 || vidas <= 0) {
     clearInterval(timer);
-    container.append("Perdiste...");
-    panel.remove(reset);
+    // container.append("Perdiste...");
+    // panel.remove(reset);
     restart.style.display = "flex";
     inputPalabras.style.display = "none"
   } else if (puntaje >= 200) {
@@ -240,6 +238,7 @@ function getRandom() {
     clearInterval(timer);
     panel.remove(reset);
     restart.style.display = "flex";
+    
 
     // ---------------------Dificultades--------------------- 
 
@@ -292,9 +291,9 @@ function getRandom() {
       return getPalabra;
     } else {
       clearInterval(timer);
-      timer = setInterval(getRandom, 800);
+      timer = setInterval(getRandom, 1000);
       getPalabra =
-        diccionario8[Math.floor(Math.random() * diccionario8.length)];
+        diccionario7[Math.floor(Math.random() * diccionario7.length)];
       palabras.push(getPalabra);
       crearSpanPalabras();
 
@@ -439,7 +438,7 @@ function saveLocalStorage(){
       diccionario5,
       diccionario6,
       diccionario7,
-      diccionario8
+      // diccionario8
     } 
 
     const diccionarioGeneral = JSON.stringify(objeto);
