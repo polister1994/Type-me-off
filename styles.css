@@ -95,10 +95,6 @@ main{
     width: 2vw;
     
 }
-.palabras.active{
-    transform: translateY(250px);
-    transition: 20s linear;
-}
 .restart{
     background-image: linear-gradient(to bottom,rgb(243 9 253) , rgb(140 95 240),rgb(47 186 227));
     width: 13vw;
@@ -119,10 +115,7 @@ main{
     justify-content: center;
     align-items: center;
 }
-.restart:hover, .restart:focus, .restart:active{
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    -webkit-transform: scale(1.1);
-}
+
 .empezar{
     display: flex;
     background-image: linear-gradient(to bottom,rgb(243 9 253) , rgb(140 95 240),rgb(47 186 227));
@@ -142,10 +135,7 @@ main{
     align-items: center;
     text-shadow: 5px 4px rgba(0, 0, 0, 0.387);
 }
-.empezar:hover, .empezar:focus, .empezar:active{
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    -webkit-transform: scale(1.1);
-}
+
 
 .playbtn{
     width: 1.5vw;
